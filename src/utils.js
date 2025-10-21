@@ -13,8 +13,6 @@ export const selfId = genId(20)
 
 export const all = Promise.all.bind(Promise)
 
-export const isBrowser = typeof window !== 'undefined'
-
 export const {entries, fromEntries, keys} = Object
 
 export const noOp = () => {}
@@ -145,13 +143,13 @@ export const socketGetter = clientMap => () =>
   fromEntries(entries(clientMap).map(([url, client]) => [url, client.socket]))
 
 export const watchOnline = () => {
-  if (isBrowser) {
+  if (window?.addEventListener) {
     const controller = new AbortController()
 
-    addEventListener('online', resumeRelayReconnection, {
+    window.addEventListener('online', resumeRelayReconnection, {
       signal: controller.signal
     })
-    addEventListener('offline', pauseRelayReconnection, {
+    window.addEventListener('offline', pauseRelayReconnection, {
       signal: controller.signal
     })
 

@@ -6,7 +6,6 @@ import {
   entries,
   fromEntries,
   fromJson,
-  isBrowser,
   keys,
   libName,
   mkErr,
@@ -325,9 +324,7 @@ export default (onPeer, onPeerLeave, onSelfLeave) => {
 
   getLeave((_, id) => exitPeer(id))
 
-  if (isBrowser) {
-    addEventListener('beforeunload', leave)
-  }
+  window?.addEventListener?.('beforeunload', leave)
 
   return {
     makeAction,
