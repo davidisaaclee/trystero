@@ -15,6 +15,7 @@ declare module 'trystero' {
     appId: string
     password?: string
     rtcConfig?: RTCConfiguration
+    rtcPolyfill?: typeof RTCPeerConnection
   }
 
   export interface ActionSender<T> {
