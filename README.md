@@ -1,3 +1,5 @@
+> This fork has changes for personal use with react-native-webrtc on iOS.
+
 # ✨🤝✨ Trystero
 
 **Build instant multiplayer web apps, no server required**
